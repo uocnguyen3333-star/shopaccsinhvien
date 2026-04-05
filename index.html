@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Acc Sinh Viên</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #121212; color: #fff; text-align: center; padding: 20px; }
+        h1 { margin-bottom: 10px; color: #00ff88; }
+        p.subtitle { color: #aaa; margin-bottom: 30px; }
+        
+        .shop-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .acc-card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .acc-card:hover { transform: translateY(-5px); border-color: #00ff88; }
+        .acc-card img { width: 100%; height: auto; display: block; }
+        
+        .acc-info { padding: 15px; text-align: left; }
+        .acc-title { font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #fff; }
+        .acc-price { font-size: 18px; color: #ff4757; font-weight: bold; margin-bottom: 15px; }
+        
+        .btn-group { display: flex; gap: 10px; }
+        .btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .btn-facebook { background-color: #1877f2; color: white; }
+        .btn-zalo { background-color: #0068ff; color: white; }
+        .btn:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+    <h1>SHOP ACC SINH VIÊN</h1>
+    <p class="subtitle">Xem acc ưng ý rồi bấm nút nhắn tin cho tôi nhé!</p>
+
+    <div class="shop-container" id="shop-container"></div>
+
+    <script>
+        // ==========================================
+        // 1. THÔNG TIN LIÊN HỆ CỦA BẠN (Sửa ở đây)
+        // ==========================================
+        const FACEBOOK_LINK = "https://m.me/nguyen.van.uoc.020704";
+        const ZALO_LINK = "https://zalo.me/0372598584";
+
+        // ==========================================
+        // 2. KHU VỰC UP ẢNH VÀ GIÁ (Sửa ở đây)
+        // Bạn chỉ cần điền link ảnh và giá tiền. Web tự lo phần còn lại!
+        // ==========================================
+        const danhSachAcc = [
+            {
+                anh: "z7693842776857_7e80e56cf6078f4bcfc5a40f2ad544c9", // Dán link ảnh acc 1 vào đây
+                gia: "5,000,000đ" // Điền giá tiền acc 1
+            },
+            {
+                anh: "z7693895297831_66805bc25f3c37ac49db578d70047b30", // Dán link ảnh acc 2 vào đây
+                gia: "4,000,000đ" // Điền giá tiền acc 2
+            },
+            {
+                anh: "z7693895335082_3b74bf827ac594958dfba48c7bc33bfd", // Dán link ảnh acc 3 vào đây
+                gia: "4,000,đ" // Điền giá tiền acc 3
+            },
+            // Muốn thêm acc thứ 4, bạn chỉ việc copy 4 dòng dưới đây rồi dán xuống tiếp:
+            // {
+            //     anh: "z7693895309056_1b4c4c6be2ba1c88e7cb8a4550725690",
+            //     gia: "500,000đ"
+            // },
+        ];
+
+        // Đoạn code JavaScript tự động tạo ô acc (Không cần đụng vào đây)
+        const container = document.getElementById('shop-container');
+        danhSachAcc.forEach((acc, index) => {
+            const card = document.createElement('div');
+            card.className = 'acc-card';
+            card.innerHTML = `
+                <img src="${acc.anh}" alt="Acc số ${index + 1}">
+                <div class="acc-info">
+                    <div class="acc-title">Mã số tài khoản: #${index + 1}</div>
+                    <div class="acc-price">${acc.gia}</div>
+                    <div class="btn-group">
+                        <a href="${FACEBOOK_LINK}" target="_blank" class="btn btn-facebook">Nhắn Facebook</a>
+                        <a href="${ZALO_LINK}" target="_blank" class="btn btn-zalo">Nhắn Zalo</a>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
